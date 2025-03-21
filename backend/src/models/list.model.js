@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
-const ListSchema = new mongoose.Schema({
-  agentId: { type: mongoose.Schema.Types.ObjectId, ref: "Agent" },
-  data: [{ firstName: String, phone: String, notes: String }],
+const taskSchema = new mongoose.Schema({
+  firstName: { type: String, required: true },
+  phone: { type: String, required: true },
+  notes: { type: String, required: true },
+  agent: { type: mongoose.Schema.Types.ObjectId, ref: "Agent", required: true },
 });
 
-export default mongoose.model("List", ListSchema);
+export default mongoose.model("Task", taskSchema);
